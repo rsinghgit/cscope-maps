@@ -82,16 +82,16 @@ if has("cscope")
     " go back to where you were before the search.
     "
 
-    nmap <C-\>s :cs find s <C-R>=expand("<cword>")<CR>:copen<CR>
-    nmap <C-\>g :cs find g <C-R>=expand("<cword>")<CR>:copen<CR>
-    nmap <C-\>c :cs find c <C-R>=expand("<cword>")<CR>:copen<CR>
-    nmap <C-\>t :cs find t <C-R>=expand("<cword>")<CR>:copen<CR>
-    nmap <C-\>e :cs find e <C-R>=expand("<cword>")<CR>:copen<CR>
-    nmap <C-\>f :cs find f <C-R>=expand("<cfile>")<CR>:copen<CR>
-    nmap <C-\>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>:copen<CR>
-    nmap <C-\>d :cs find d <C-R>=expand("<cword>")<CR>:copen<CR>
-    nmap <C-\>a :cs find a <C-R>=expand("<cword>")<CR>:copen<CR>
-    nmap <C-\>S :cs find t struct <C-R>=expand("<cword>")<CR> {<CR>:copen<CR>
+    silent nnoremap <silent> <unique> <C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR>:copen<CR>
+    silent nnoremap <silent> <unique> <C-\>g :cs find g <C-R>=expand("<cword>")<CR><CR>:copen<CR>
+    silent nnoremap <silent> <unique> <C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR>:copen<CR>
+    silent nnoremap <silent> <unique> <C-\>t :cs find t <C-R>=expand("<cword>")<CR><CR>:copen<CR>
+    silent nnoremap <silent> <unique> <C-\>e :cs find e <C-R>=expand("<cword>")<CR><CR>:copen<CR>
+    silent nnoremap <silent> <unique> <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>:copen<CR>
+    silent nnoremap <silent> <unique> <C-\>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>:copen<CR>
+    silent nnoremap <silent> <unique> <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>:copen<CR>
+    silent nnoremap <silent> <unique> <C-\>a :cs find a <C-R>=expand("<cword>")<CR><CR>:copen<CR>
+    silent nnoremap <silent> <unique> <C-\>S :cs find t struct <C-R>=expand("<cword>")<CR> {<CR>:copen<CR>
 
 
     " Using 'CTRL-spacebar' (interpreted as CTRL-@ by vim) then a search type
