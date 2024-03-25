@@ -37,31 +37,6 @@ if has("cscope")
     " hide msg when adding cscope database at start
     set nocscopeverbose
 
-    " Find and add a cscope file. Either from CSCOPE_DB or by searching for it
-    " recursively starting in the CWD and going up to /
-    if $CSCOPE_DB != ""
-        cs add $CSCOPE_DB
-    else
-        " Get all parts of our current path
-        let dirs = split($PWD, '/')
-        " Start building a list of paths in which to look for cscope.out
-        let paths = ['/']
-        " /foo/bar/baz would result in the `paths` array containing:
-        " [/ /foo /foo/bar /foo/bar/baz]
-        for d in dirs
-            let paths = add(paths, paths[len(paths) - 1] . d . '/')
-        endfor
-
-        " List is backwards search order, so reverse it.
-        for d in reverse(paths)
-            let cscope_file = d . "/cscope.out"
-            if filereadable(cscope_file)
-                execute('cs add ' . cscope_file)
-                break
-            endif
-        endfor
-    endif
-
     " show msg when any other cscope db added
     set cscopeverbose
 
@@ -107,16 +82,16 @@ if has("cscope")
     " go back to where you were before the search.
     "
 
-    nmap <C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-\>g :cs find g <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-\>c :cs find c <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-\>t :cs find t <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-\>e :cs find e <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
-    nmap <C-\>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
-    nmap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-\>a :cs find a <C-R>=expand("<cword>")<CR><CR>
-    nmap <C-\>S :cs find t struct <C-R>=expand("<cword>")<CR> {<CR>
+    nmap <C-\>s :cs find s <C-R>=expand("<cword>")<CR>:copen<CR>
+    nmap <C-\>g :cs find g <C-R>=expand("<cword>")<CR>:copen<CR>
+    nmap <C-\>c :cs find c <C-R>=expand("<cword>")<CR>:copen<CR>
+    nmap <C-\>t :cs find t <C-R>=expand("<cword>")<CR>:copen<CR>
+    nmap <C-\>e :cs find e <C-R>=expand("<cword>")<CR>:copen<CR>
+    nmap <C-\>f :cs find f <C-R>=expand("<cfile>")<CR>:copen<CR>
+    nmap <C-\>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>:copen<CR>
+    nmap <C-\>d :cs find d <C-R>=expand("<cword>")<CR>:copen<CR>
+    nmap <C-\>a :cs find a <C-R>=expand("<cword>")<CR>:copen<CR>
+    nmap <C-\>S :cs find t struct <C-R>=expand("<cword>")<CR> {<CR>:copen<CR>
 
 
     " Using 'CTRL-spacebar' (interpreted as CTRL-@ by vim) then a search type
